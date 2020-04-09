@@ -28,20 +28,20 @@ public class ConnectionBrokerInit extends Thread{
 		try {
 			String msgReceived = this.input.readUTF();
 			System.out.println("Message from broker: " + msgReceived);
-			this.output.writeUTF("Mandeme su dirección IP...");
+			this.output.writeUTF("Send IP Adress...");
 			String msgIP = this.input.readUTF();
-			System.out.println("IP from Broker..." + msgIP);
+			System.out.println("IP from Broker: " + msgIP);
 			this.brokerMaster.addBroker(msgIP);
-			
 			while(true) {
 				if(this.brokerMaster.MIN == this.brokerMaster.getBrokerCount()) {
+					System.out.println("Minimum Brokers achieved. Master Broker sending IPs...");
 					for(String actual: this.brokerMaster.getBrokers()) {
+						System.out.println("Sending to broker IP: " + actual + "...");
 						this.output.writeUTF(actual);
 					}
 					break;
 				}
 			}
-			
 
 		} catch (IOException e) {
 			System.out.println("Error - IOException: " + e.getMessage());

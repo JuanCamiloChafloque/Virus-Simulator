@@ -25,18 +25,9 @@ public class Broker {
 			this.output = new DataOutputStream(this.socket.getOutputStream());
 			this.input = new DataInputStream(this.socket.getInputStream());
 			this.ip = (Inet4Address) Inet4Address.getLocalHost();
-			System.out.println("--->Broker Inició");
+			System.out.println("Broker initialized...");
+			new ConnectionBroker(this.socket, this);
 			
-			this.output.writeUTF("Broker esta pidiendo lista...");
-			String msgReceived = this.input.readUTF();
-			System.out.println("--->Mensaje recibido del BrokerInit..." + msgReceived);
-			this.output.writeUTF(getIP().getHostAddress());
-			String msgListas = this.input.readUTF();
-			addBroker(msgListas);
-			
-			for(String actual: this.brokers) {
-				System.out.println("Tengo al broker en la IP: " + actual);
-			}
 				
 		} catch (IOException e) {
 			System.out.println( "Error - IOException" + e.getMessage() );

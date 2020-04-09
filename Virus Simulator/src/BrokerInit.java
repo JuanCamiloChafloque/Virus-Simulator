@@ -17,10 +17,10 @@ public class BrokerInit {
 			brokerCount = 0;
 			brokers = new ArrayList<String>();
 			this.server = new ServerSocket(5000);
-			System.out.println("--->Broker Maestro inició...");
+			System.out.println("Master Broker init...");
 			
 			while(true) {
-				System.out.println("Waiting for message from broker...");
+				System.out.println("Waiting for broker to connect...");
 				this.socket = this.server.accept();
 				System.out.println("Broker accepted...");
 				new ConnectionBrokerInit(this.socket, this);	
@@ -33,6 +33,7 @@ public class BrokerInit {
 	
 	public void addBroker(String broker) {
 		this.brokers.add(broker);
+		System.out.println("New broker added to list");
 		this.brokerCount++;
 	}
 	

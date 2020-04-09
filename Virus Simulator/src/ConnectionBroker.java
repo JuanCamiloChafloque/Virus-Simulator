@@ -22,4 +22,28 @@ public class ConnectionBroker extends Thread {
 		}
 	}
 	
+	public void run() {
+		
+		try {	
+			this.output.writeUTF("Broker asking for confirmation...");
+			String msgReceived = this.input.readUTF();
+			System.out.println("Message received from Master Broker: " + msgReceived);
+			this.output.writeUTF(this.broker.getIP().getHostAddress());
+			System.out.println("Sending IP Address...");
+			while(true) {
+				String msgRequest = this.input.readUTF();
+				System.out.println("Message received from master broker: " + msgRequest);
+				if(!this.broker.getIP().getHostAddress().equals(msgRequest)) {
+					this.broker.addBroker(msgRequest);
+					System.out.println("Broker added another broker with IP: " + msgRequest);
+				}
+			}
+
+			
+		} catch (IOException e) {
+			System.out.println("Error - IOException: " + e.getMessage());
+		}
+			
+	}
+	
 }
