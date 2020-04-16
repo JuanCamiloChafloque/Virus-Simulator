@@ -1,9 +1,0 @@
-Colombia;Venezuela
-Colombia;Ecuador
-Colombia;Peru
-Colombia;Brasil
-Peru;Colombia
-Peru;Ecuador
-Venezuela;Colombia
-Ecuador;Colombia
-Ecuador;Peru
