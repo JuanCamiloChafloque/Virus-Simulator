@@ -105,7 +105,7 @@ public class Broker extends Thread {
 									paises.add(actual);
 								}
 							}
-							System.out.println("Cantidad de paises del broker: " + myInfo.getCodigoBroker() + " es de: " + paises.size() + "\n");
+							System.out.println("Cantidad de paises del broker es de: " + paises.size() + "\n");
 							break;
 
 						case 3:
