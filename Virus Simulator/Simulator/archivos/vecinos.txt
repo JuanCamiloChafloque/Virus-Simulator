@@ -1,0 +1,10 @@
+Colombia;Venezuela
+Colombia;Ecuador
+Venezuela;Colombia
+Ecuador;Colombia
+Chile;Argentina
+Chile;Uruguay
+Argentina;Chile
+Uruguay;Chile
+Taiwan;China
+China;Taiwan
